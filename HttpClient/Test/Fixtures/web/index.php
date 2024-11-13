@@ -31,7 +31,7 @@ foreach ($_SERVER as $k => $v) {
 
 $json = json_encode($vars, \JSON_PRETTY_PRINT | \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE);
 
-switch ($vars['REQUEST_URI']) {
+switch (parse_url($vars['REQUEST_URI'], \PHP_URL_PATH)) {
     default:
         exit;
 
@@ -94,13 +94,8 @@ switch ($vars['REQUEST_URI']) {
 
     case '/302':
         if (!isset($vars['HTTP_AUTHORIZATION'])) {
-            header('Location: http://localhost:8057/', true, 302);
-        }
-        break;
-
-    case '/302-no-scheme':
-        if (!isset($vars['HTTP_AUTHORIZATION'])) {
-            header('Location: localhost:8067', true, 302);
+            $location = $_GET['location'] ?? 'http://localhost:8057/';
+            header('Location: '.$location, true, 302);
         }
         break;
 
