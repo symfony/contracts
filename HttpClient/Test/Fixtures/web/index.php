@@ -98,6 +98,12 @@ switch ($vars['REQUEST_URI']) {
         }
         break;
 
+    case '/302-no-scheme':
+        if (!isset($vars['HTTP_AUTHORIZATION'])) {
+            header('Location: localhost:8067', true, 302);
+        }
+        break;
+
     case '/302/relative':
         header('Location: ..', true, 302);
         break;
