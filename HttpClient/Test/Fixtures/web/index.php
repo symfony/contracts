@@ -12,20 +12,26 @@ if (!$_POST) {
     $_POST['content-type'] = $_SERVER['HTTP_CONTENT_TYPE'] ?? '?';
 }
 
+$headers = [
+    'SERVER_PROTOCOL',
+    'SERVER_NAME',
+    'REQUEST_URI',
+    'REQUEST_METHOD',
+    'PHP_AUTH_USER',
+    'PHP_AUTH_PW',
+    'REMOTE_ADDR',
+    'REMOTE_PORT',
+];
+
+foreach ($headers as $k) {
+    if (isset($_SERVER[$k])) {
+        $vars[$k] = $_SERVER[$k];
+    }
+}
+
 foreach ($_SERVER as $k => $v) {
-    switch ($k) {
-        default:
-            if (0 !== strpos($k, 'HTTP_')) {
-                continue 2;
-            }
-            // no break
-        case 'SERVER_NAME':
-        case 'SERVER_PROTOCOL':
-        case 'REQUEST_URI':
-        case 'REQUEST_METHOD':
-        case 'PHP_AUTH_USER':
-        case 'PHP_AUTH_PW':
-            $vars[$k] = $v;
+    if (0 === strpos($k, 'HTTP_')) {
+        $vars[$k] = $v;
     }
 }
 
