@@ -21,8 +21,15 @@ class TestHttpServer
     /**
      * @return Process
      */
-    public static function start(int $port = 8057, $ip = '127.0.0.1')
+    public static function start(int $port = 8057)
     {
+        if (0 > $port) {
+            $port = -$port;
+            $ip = '[::1]';
+        } else {
+            $ip = '127.0.0.1';
+        }
+
         if (isset(self::$process[$port])) {
             self::$process[$port]->stop();
         } else {
