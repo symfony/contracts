@@ -737,7 +737,7 @@ abstract class HttpClientTestCase extends TestCase
 
     public function testIPv6Resolve()
     {
-        TestHttpServer::start(-8087, '[::1]');
+        TestHttpServer::start(-8087);
 
         $client = $this->getHttpClient(__FUNCTION__);
         $response = $client->request('GET', 'http://symfony.com:8087/', [
