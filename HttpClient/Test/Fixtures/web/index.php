@@ -42,6 +42,7 @@ switch (parse_url($vars['REQUEST_URI'], \PHP_URL_PATH)) {
         exit;
 
     case '/head':
+        header('X-Request-Vars: '.json_encode($vars, \JSON_UNESCAPED_SLASHES | \JSON_UNESCAPED_UNICODE));
         header('Content-Length: '.strlen($json), true);
         break;
 
