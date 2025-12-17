@@ -33,7 +33,7 @@ trait ServiceMethodsSubscriberTrait
         $services = method_exists(get_parent_class(self::class) ?: '', __FUNCTION__) ? parent::getSubscribedServices() : [];
 
         foreach ((new \ReflectionClass(self::class))->getMethods() as $method) {
-            if (self::class !== $method->getDeclaringClass()->name) {
+            if (self::class !== $method->class) {
                 continue;
             }
 
