@@ -1,6 +1,11 @@
 CHANGELOG
 =========
 
+3.7
+---
+
+ * Add support for the `max_connect_duration` option in `HttpClientInterface`
+
 3.6
 ---
 
