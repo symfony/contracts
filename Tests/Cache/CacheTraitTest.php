@@ -106,9 +106,7 @@ class CacheTraitTest extends TestCase
 
     public function testExceptionOnNegativeBeta()
     {
-        $cache = $this->getMockBuilder(TestPool::class)
-            ->onlyMethods(['getItem', 'save'])
-            ->getMock();
+        $cache = new TestPool();
 
         $callback = static fn (CacheItemInterface $item) => 'computed data';
 
