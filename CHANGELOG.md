@@ -5,6 +5,7 @@ CHANGELOG
 ---
 
  * Add support for the `max_connect_duration` option in `HttpClientInterface`
+ * Add support for hooked properties in `ServiceMethodsSubscriberTrait`
 
 3.6
 ---
