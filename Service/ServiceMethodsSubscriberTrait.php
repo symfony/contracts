@@ -57,7 +57,7 @@ trait ServiceMethodsSubscriberTrait
 
                 $defaultKey = self::class.'::'.$reflector->name;
             } elseif ($reflector instanceof \ReflectionProperty) {
-                if (\PHP_VERSION_ID <= 80400 || !$reflector->hasHook(\PropertyHookType::Get)) {
+                if (\PHP_VERSION_ID < 80400 || !$reflector->hasHook(\PropertyHookType::Get)) {
                     throw new \LogicException(\sprintf('Cannot use "%s" on property "%s::$%s" (can only be used on properties with a get hook).', SubscribedService::class, self::class, $reflector->name));
                 }
 
