@@ -122,7 +122,6 @@ switch (parse_url($vars['REQUEST_URI'], \PHP_URL_PATH)) {
             exit;
         }
         header('ETag: "abc123"');
-        header('Cache-Control: no-cache');
         break;
 
     case '/307':
