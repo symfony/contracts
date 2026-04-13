@@ -43,7 +43,7 @@ class CacheTraitTest extends TestCase
         $cache->expects($this->once())
             ->method('save');
 
-        $callback = function (CacheItemInterface $item) {
+        $callback = static function (CacheItemInterface $item) {
             return 'computed data';
         };
 
@@ -101,7 +101,7 @@ class CacheTraitTest extends TestCase
         $cache->expects($this->once())
             ->method('save');
 
-        $callback = function (CacheItemInterface $item) {
+        $callback = static function (CacheItemInterface $item) {
             return 'computed data';
         };
 
@@ -112,7 +112,7 @@ class CacheTraitTest extends TestCase
     {
         $cache = new TestPool();
 
-        $callback = function (CacheItemInterface $item) {
+        $callback = static function (CacheItemInterface $item) {
             return 'computed data';
         };
 
