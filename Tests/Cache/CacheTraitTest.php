@@ -43,9 +43,7 @@ class CacheTraitTest extends TestCase
         $cache->expects($this->once())
             ->method('save');
 
-        $callback = static function (CacheItemInterface $item) {
-            return 'computed data';
-        };
+        $callback = static fn (CacheItemInterface $item) => 'computed data';
 
         $cache->get('key', $callback);
     }
@@ -101,9 +99,7 @@ class CacheTraitTest extends TestCase
         $cache->expects($this->once())
             ->method('save');
 
-        $callback = static function (CacheItemInterface $item) {
-            return 'computed data';
-        };
+        $callback = static fn (CacheItemInterface $item) => 'computed data';
 
         $cache->get('key', $callback, \INF);
     }
@@ -112,9 +108,7 @@ class CacheTraitTest extends TestCase
     {
         $cache = new TestPool();
 
-        $callback = static function (CacheItemInterface $item) {
-            return 'computed data';
-        };
+        $callback = static fn (CacheItemInterface $item) => 'computed data';
 
         $this->expectException(\InvalidArgumentException::class);
         $cache->get('key', $callback, -2);
