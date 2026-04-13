@@ -9,7 +9,7 @@
  * file that was distributed with this source code.
  */
 
-if (!function_exists('trigger_deprecation')) {
+if (!\function_exists('trigger_deprecation')) {
     /**
      * Triggers a silenced deprecation notice.
      *
