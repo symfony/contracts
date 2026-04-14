@@ -379,9 +379,7 @@ abstract class HttpClientTestCase extends TestCase
             'Content-Type: application/json',
         ];
 
-        $filteredHeaders = array_values(array_filter($response->getInfo('response_headers'), static function ($h) {
-            return \in_array(substr($h, 0, 4), ['HTTP', 'Loca', 'Cont'], true) && 'Content-Encoding: gzip' !== $h;
-        }));
+        $filteredHeaders = array_values(array_filter($response->getInfo('response_headers'), static fn ($h) => \in_array(substr($h, 0, 4), ['HTTP', 'Loca', 'Cont'], true) && 'Content-Encoding: gzip' !== $h));
 
         $this->assertSame($expected, $filteredHeaders);
     }
@@ -467,9 +465,7 @@ abstract class HttpClientTestCase extends TestCase
             'Content-Type: application/json',
         ];
 
-        $filteredHeaders = array_values(array_filter($response->getInfo('response_headers'), static function ($h) {
-            return \in_array(substr($h, 0, 4), ['HTTP', 'Loca', 'Cont'], true);
-        }));
+        $filteredHeaders = array_values(array_filter($response->getInfo('response_headers'), static fn ($h) => \in_array(substr($h, 0, 4), ['HTTP', 'Loca', 'Cont'], true)));
 
         $this->assertSame($expected, $filteredHeaders);
     }
