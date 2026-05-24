@@ -210,12 +210,6 @@ switch (parse_url($vars['REQUEST_URI'], \PHP_URL_PATH)) {
             }
         }
         break;
-
-    case '/ntlm-always-401':
-        header('HTTP/1.1 401 Unauthorized');
-        header('WWW-Authenticate: NTLM TlRMTVNTUAACAAAAAwADADgAAAAGgokCB7m5ksVjjAsAAAAAAAAAAHYAdgA7AAAACgB8TwAAAA9QUkQ=');
-        header('Content-Length: 0');
-        exit;
 }
 
 header('Content-Type: application/json', true);
