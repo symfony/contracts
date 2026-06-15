@@ -16,7 +16,7 @@ use Psr\Container\ContainerInterface;
 /**
  * Implemented by objects that expose a service container.
  */
-interface ContainerAwareInterface
+interface ContainerProviderInterface
 {
     public function getContainer(): ContainerInterface;
 }
